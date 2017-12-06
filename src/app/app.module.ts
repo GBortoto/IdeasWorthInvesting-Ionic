@@ -11,13 +11,29 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+// Pages criadas - IwI
+
+import { WelcomePage } from '../pages/welcome/welcome';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { ThreadPage } from '../pages/thread/thread';
+import { IdeasPage } from '../pages/ideas/ideas';
+import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
+import { ThreadServiceProvider } from '../providers/thread-service/thread-service';
+import { IdeaServiceProvider } from '../providers/idea-service/idea-service';
+
 @NgModule({
   declarations: [
     MyApp,
+    WelcomePage,
+    LoginPage,
+    SignupPage,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ThreadPage,
+    IdeasPage
   ],
   imports: [
     BrowserModule,
@@ -26,15 +42,23 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    WelcomePage,
+    LoginPage,
+    SignupPage,
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ThreadPage,
+    IdeasPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestapiServiceProvider,
+    ThreadServiceProvider,
+    IdeaServiceProvider
   ]
 })
 export class AppModule {}
