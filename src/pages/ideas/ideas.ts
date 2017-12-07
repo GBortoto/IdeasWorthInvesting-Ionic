@@ -11,7 +11,7 @@ import { SignUpInfoProvider } from '../../providers/sign-up-info/sign-up-info';
   templateUrl: 'ideas.html'
 })
 export class IdeasPage {
-  ideas: any[] = new Array(5);
+  ideas: any[] = new Array(10);
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider) {
     for(var i=0; i<10;i++){
