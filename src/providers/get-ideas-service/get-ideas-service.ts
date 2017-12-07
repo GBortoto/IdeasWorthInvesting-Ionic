@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -11,18 +10,20 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetIdeasServiceProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     //console.log('Hello GetIdeasServiceProvider Provider');
-    this.data = null;
+    //this.data = null;
   }
 
   getRemoteData(){
 
-    this.http.get('http://iwiaccount.pythonanywhere.com/idea/user/').subscribe(data => {
+    this.http.get('http://iwiaccount.pythonanywhere.com/idea/user/1').map(res => res.json()).subscribe(data => {
       console.log(data);
     });
 
   }
+
+
 
   load() {
     /*
