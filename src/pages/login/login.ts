@@ -20,6 +20,8 @@ export class LoginPage {
   username: string;
   password: string;
 
+  elemento: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public singIn: SingInProvider, public http: Http) {
       this.username = null;
       this.password = null;
@@ -105,11 +107,16 @@ export class LoginPage {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
 
-  	this.http.post('http://iwiaccount.pythonanywhere.com/rest-auth/login/',
+  	var tentativa = this.http.post('http://iwiaccount.pythonanywhere.com/rest-auth/login/',
   		JSON.stringify(info), {headers: headers})
   	.map(res => res.json())
   	.subscribe(data => {
   		console.log(data);
    	});
+
+  	//console.log("RETORNO:");
+  	//console.log(data);
+  	//console.log(headers);
+   	//this.elemento = data;
   }
 }

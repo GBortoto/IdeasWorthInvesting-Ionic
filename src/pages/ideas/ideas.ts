@@ -16,8 +16,8 @@ export class IdeasPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider) {
     for(var i=0; i<10;i++){
   		var idea = {
-  			name: "Teste " + i,
-  			content: "Test " + i
+  			name: "Idea número " + i,
+  			content: "Eu sou o texto de descrição da ideia " + i + ", eu sou responsável por passar uma curta introdução a ideia principal"
   		}
   		this.ideas[i] = idea;
   	}
