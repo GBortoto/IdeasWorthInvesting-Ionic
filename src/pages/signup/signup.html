@@ -13,27 +13,27 @@
 
   <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="username" id="username" (input)="resetColor('username')"></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="password" id="password" (input)="resetColor('password')"></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email" id="email" (input)="resetColor('email')"></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating>First Name</ion-label>
-      <ion-input type="name"></ion-input>
+      <ion-input type="name" [(ngModel)]="firstName" id="firstName" (input)="resetColor('firstName')"></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating>Last Name</ion-label>
-      <ion-input type="name"></ion-input>
+      <ion-input type="name" [(ngModel)]="lastName" id="lastName" (input)="resetColor('lastName')"></ion-input>
   </ion-item>
 
 </ion-list>

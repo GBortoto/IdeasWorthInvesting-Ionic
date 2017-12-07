@@ -1,7 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, App} from 'ionic-angular';
 import { MyApp } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -18,9 +21,10 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ThreadPage } from '../pages/thread/thread';
 import { IdeasPage } from '../pages/ideas/ideas';
-import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
-import { ThreadServiceProvider } from '../providers/thread-service/thread-service';
-import { IdeaServiceProvider } from '../providers/idea-service/idea-service';
+
+import { GetIdeasServiceProvider } from '../providers/get-ideas-service/get-ideas-service';
+import { SignUpInfoProvider } from '../providers/sign-up-info/sign-up-info';
+import { SingInProvider } from '../providers/sing-in/sing-in';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { IdeaServiceProvider } from '../providers/idea-service/idea-service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,9 +62,10 @@ import { IdeaServiceProvider } from '../providers/idea-service/idea-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestapiServiceProvider,
-    ThreadServiceProvider,
-    IdeaServiceProvider
+    GetIdeasServiceProvider,
+    SignUpInfoProvider,
+    SingInProvider
   ]
 })
+
 export class AppModule {}

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      My Ideas
+      {{currentIdea.name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-<ion-segment [(ngModel)]="ideasOptions">
+<ion-segment [(ngModel)]="threadsOptions">
     <ion-segment-button value="Discussions">
       Discussions
     </ion-segment-button>
@@ -16,9 +16,9 @@
     </ion-segment-button>
 </ion-segment>
 
-<div [ngSwitch]="ideasOptions">
+<div [ngSwitch]="threadsOptions">
   <ion-list *ngSwitchCase="'Discussions'">
-    <ion-item *ngFor="let thread of threads" (click)="threadClicada(thread)">{{thread}}</ion-item>
+    <ion-item *ngFor="let thread of threads">{{thread}}</ion-item>
   </ion-list>
     <ion-list *ngSwitchCase="'Members'">
       <ion-item>

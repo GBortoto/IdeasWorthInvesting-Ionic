@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 
+//import { SignUpInfoProvider } from '../providers/sign-up-info/sign-up-info';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,3 +22,5 @@ export class MyApp {
     })
   }
 }
+
+//ionicBootstrap(MyApp, [SignUpInfoProvider]);

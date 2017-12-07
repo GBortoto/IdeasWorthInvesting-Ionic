@@ -1,3 +1,52 @@
 page-ideas {
+	padding: 0 !important;
+	margin: 0 !important;
+
+	.ideasContent{
+		background-color: color($colors, primary);
+		padding: 0 !important;
+		margin: 0 !important;
+
+	}
+
+	.ideasList{
+		padding: 0 !important;
+		//width: 100%;
+		margin: 2px;
+	}
+
+	.ideasItem{
+		background-color: color($colors, primary);
+		height: 135px;
+		
+	}
+
+	.ideaCard {
+	   background-color: color($colors, ionicWhite);
+	   border-color: color($colors, primary);
+	   height: 125px;
+	}
+
+	.ideaCard-header {
+		text-align: left;
+		font-size: 20px;
+		width: 100%;
+		padding: 5px;
+	}
+
+	.ideaIcon{
+		margin-top: 1px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	.ideaCard-text {
+		margin-top: 5px;
+		margin-bottom: 10px;
+		text-align: left;
+		font-size: 16px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 
 }

@@ -36,8 +36,41 @@ $app-direction: ltr;
 $colors: (
   primary:    #e29c23,
   secondary:  #ed4d0f,
-  white:      #ffffff,
+
   light:      #ffd960,
+  white:      #ffffff,
+  ionicWhite: #f8f8f8,
+
+  lightYellow:#ffffd3,
+
+  lightDark:  #d9d9d9,
+
+  toolbar:    #e27423,
+
+  r1c1:       #ebc137,
+  r1c2:       #e38c2d,
+  r1c3:       #db4c2c,
+  r1c4:       #771e10,
+  r1c5:       #48110c,
+
+  r2c1:       #e29c23,
+  r2c2:       #e87f1a,
+  r2c3:       #ef5d13,
+  r2c4:       #ed4d0f,
+  r2c5:       #ea3911,
+
+  r3c1:       #cf6615,
+  r3c2:       #c04e10,
+  r3c3:       #b1370c,
+  r3c4:       #a22008,
+  r3c5:       #930803,
+
+  r4c1:       #ffd960,
+  r4c2:       #f9a83c,
+  r4c3:       #dd7a37,
+  r4c4:       #ad3a1b,
+  r4c5:       #690600,
+
   signIn: (
     base: #e29c23,
     contrast: #ffffff
@@ -48,6 +81,7 @@ $colors: (
   )
 );
 
+$toolbar-background: color($colors, toolbar);
 
 // App iOS Variables
 // --------------------------------------------------
@@ -93,3 +127,47 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+@font-face {
+  font-family: 'BloggerSans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/BloggerSans/BloggerSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'BloggerSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/BloggerSans/BloggerSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'BloggerSans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/BloggerSans/BloggerSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/OpenSans/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/OpenSans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/OpenSans/OpenSans-Bold.ttf');
+}
+
+$font-family-base: "OpenSans";

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { ThreadPage } from '../thread/thread';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-service';
-//import { RestapiServiceProvider } from '../providers/restapi-service';
+//import { App } from 'ionic-framework/ionic';
+//import { ThreadPage } from '../thread/thread';
 
 @Component({
   selector: 'page-about',
@@ -11,10 +10,14 @@ import { RestapiServiceProvider } from '../../providers/restapi-service/restapi-
 })
 export class AboutPage {
   threads: any;
-  nomeDaIdeiaAtual: any;
+  currentIdea: any;
 
-  constructor(public navCtrl: NavController, public restapiServiceProvider: RestapiServiceProvider) {
-    this.threadsOptions = "Discussions";
+  threadsOptions: string = "Discussions";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.currentIdea = navParams.get('currentIdea');
+    //console.log("Current idea: " + this.currentIdea.name);
+    //this.threadsOptions = "Discussions";
     //getThreads(nomeDaThreadAtual);
   }
 

@@ -6,8 +6,28 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-<ion-list>
-    <ion-item *ngFor="let idea of ideas"> {{idea}} </ion-item>
+<ion-content class="ideasContent">
+
+<ion-list no-lines class="ideasList">
+
+  <ion-item *ngFor="let idea of ideas" class="ideasItem">
+    <ion-card class="ideaCard" text-center (click)="goToIdea(idea)">
+
+			<ion-card-header class="ideaCard-header">
+        <ion-icon name="bulb" color="primary" class="ideaIcon"></ion-icon>
+			    {{idea.name}}
+			</ion-card-header>
+
+      <div class="ideaCard-text" text-justify>
+        <p text-wrap style="color:primary;">
+          {{idea.content}}
+        </p>
+      </div>
+      
+
+    </ion-card>
+	</ion-item>
+
 </ion-list>
+
 </ion-content>
