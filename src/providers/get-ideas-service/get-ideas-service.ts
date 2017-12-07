@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 /*
   Generated class for the GetIdeasServiceProvider provider.
 
@@ -18,10 +19,10 @@ export class GetIdeasServiceProvider {
   }
 
   load() {
+    /*
     if (this.data) {
       return Promise.resolve(this.data);
     }
- 
     return new Promise(resolve => {
       this.http.get('')
         .map(res => res.json())
@@ -31,4 +32,6 @@ export class GetIdeasServiceProvider {
         }); // End of subscribe()
     }); // End of return new Promisse
   } // End of load()
+  */
+  }
 }
