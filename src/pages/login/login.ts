@@ -17,7 +17,12 @@ import 'rxjs/add/operator/map';
 })
 export class LoginPage {
 
+  username: string;
+  password: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public singIn: SingInProvider, public http: Http) {
+      this.username = null;
+      this.password = null;
   }
 
   skip(){

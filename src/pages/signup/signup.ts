@@ -16,8 +16,18 @@ import 'rxjs/add/operator/map';
 
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider, public http: Http) {
+  username: string;
+  password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider, public http: Http) {
+      this.username = null;
+      this.password = null;
+      this.email = null;
+      this.firstName = null;
+      this.lastName = null;
   }
 
   signUp(){
@@ -43,7 +53,7 @@ export class SignupPage {
     };
 
 
-    
+
     var info = {
       username:   this.username,
       password:   this.password,
