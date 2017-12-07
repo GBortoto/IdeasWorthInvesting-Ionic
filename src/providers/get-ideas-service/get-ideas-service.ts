@@ -11,11 +11,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetIdeasServiceProvider {
 
-	data: any;
-
   constructor(public http: HttpClient) {
     //console.log('Hello GetIdeasServiceProvider Provider');
     this.data = null;
+  }
+
+  getRemoteData(){
+
+    this.http.get('http://iwiaccount.pythonanywhere.com/idea/user/').subscribe(data => {
+      console.log(data);
+    });
+
   }
 
   load() {
