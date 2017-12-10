@@ -13,30 +13,24 @@ import { GetIdeasServiceProvider } from '../../providers/get-ideas-service/get-i
   providers: [GetIdeasServiceProvider]
 })
 export class IdeasPage {
-  ideas: any[] = new Array(10);
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider, public getIdeas: GetIdeasServiceProvider) {
-     this.getIdeas.getRemoteData();
-    
-    for(var i=0; i<10;i++){
-  		var idea = {
-  			name: "Idea número " + i,
-  			content: "Eu sou o texto de descrição da ideia " + i + ", eu sou responsável por passar uma curta introdução a ideia principal"
-  		}
-  		this.ideas[i] = idea;
-  	}
-    
-    
+  ideas: any = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public signUpInfo: SignUpInfoProvider, public getIdeas: GetIdeasServiceProvider) {}
+
+  ionViewDidLoad() {
+    this.listIdeas();
+  }
+
+  listIdeas() {
+    this.getIdeas.getRemoteData().subscribe(data => this.ideas = data)
   }
 
   goToIdea(idea){
     this.navCtrl.push(AboutPage, {
       currentIdea: idea
     });
-  }
-
-  getListOfIdeas(){
-
   }
 
 }

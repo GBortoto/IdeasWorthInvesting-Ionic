@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
+
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+
+import { Observable } from 'rxjs/Observable'
 /*
   Generated class for the GetIdeasServiceProvider provider.
 
@@ -10,35 +15,25 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GetIdeasServiceProvider {
 
+  private url: string = "http://iwiaccount.pythonanywhere.com/idea/user/1/";
+
   constructor(public http: Http) {
-    //console.log('Hello GetIdeasServiceProvider Provider');
-    //this.data = null;
-  }
-
-  getRemoteData(){
-
-    this.http.get('http://iwiaccount.pythonanywhere.com/idea/user/1').map(res => res.json()).subscribe(data => {
-      console.log(data);
-    });
 
   }
 
-
-
-  load() {
-    /*
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-    return new Promise(resolve => {
-      this.http.get('')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        }); // End of subscribe()
-    }); // End of return new Promisse
-  } // End of load()
-  */
+  getRemoteData() {
+    return this.http.get(this.url)
+      .map(this.extractData)
+      .catch(this.catchError)
   }
+
+  private extractData(res: Response) {
+    return res.json();
+  }
+
+  private catchError(error: Response | any) {
+    console.log(error);
+    return Observable.throw(error.json().error || "Server error.");
+  }
+
 }
