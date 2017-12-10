@@ -18,7 +18,12 @@
 
   <ion-item>
       <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password" id="password" (input)="resetColor('password')"></ion-input>
+      <ion-input type="password" [(ngModel)]="password1" id="password1" (input)="resetColor('password1')"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Repeat Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password2" id="password2" (input)="resetColor('password2')"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -26,15 +31,6 @@
       <ion-input type="email" [(ngModel)]="email" id="email" (input)="resetColor('email')"></ion-input>
   </ion-item>
 
-  <ion-item>
-      <ion-label floating>First Name</ion-label>
-      <ion-input type="name" [(ngModel)]="firstName" id="firstName" (input)="resetColor('firstName')"></ion-input>
-  </ion-item>
-
-  <ion-item>
-      <ion-label floating>Last Name</ion-label>
-      <ion-input type="name" [(ngModel)]="lastName" id="lastName" (input)="resetColor('lastName')"></ion-input>
-  </ion-item>
 
 </ion-list>
 

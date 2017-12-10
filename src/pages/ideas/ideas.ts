@@ -14,16 +14,23 @@ import { GetIdeasServiceProvider } from '../../providers/get-ideas-service/get-i
 })
 export class IdeasPage {
 
-  ideas: any = [];
+  private ideas: any = [];
+
+  private user_id: number;
+  private user_token: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public signUpInfo: SignUpInfoProvider, public getIdeas: GetIdeasServiceProvider) {}
 
   ionViewDidLoad() {
     this.listIdeas();
+
+    this.user_token = this.navParams.get('token');
+    this.user_id = this.navParams.get('user').pk;
   }
 
   listIdeas() {
+    this.getIdeas.setUserID(this.user_id);
     this.getIdeas.getRemoteData().subscribe(data => this.ideas = data)
   }
 

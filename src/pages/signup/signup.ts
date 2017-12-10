@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
+import { IdeasPage } from '../ideas/ideas';
 
 import { SignUpInfoProvider } from '../../providers/sign-up-info/sign-up-info';
 
@@ -17,166 +17,155 @@ import 'rxjs/add/operator/map';
 export class SignupPage {
 
   username: string;
-  password: string;
+  password1: string;
+  password2: string;
   email: string;
-  firstName: string;
-  lastName: string;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public signUpInfo: SignUpInfoProvider, public http: Http) {
       this.username = null;
-      this.password = null;
+      this.password1 = null;
+      this.password2 = null;
       this.email = null;
-      this.firstName = null;
-      this.lastName = null;
   }
 
-  signUp(){
-    if(!this.checkUsername(this.username)){
+  signUp() {
+    if(!this.checkUsername(this.username)) {
       this.sendError("username");
       return;
     };
-    if(!this.checkPassword(this.password)){
-      this.sendError("password");
+    if(!this.checkPassword(this.password1)) {
+      this.sendError("password1");
       return;
     };
-    if(!this.checkEmail(this.email)){
+    if(!this.checkPassword(this.password2)) {
+      this.sendError("password2");
+      return;
+    }
+    if(!this.checkTwoPasswords(this.password1, this.password2)) {
+      this.sendError("twopasswords");
+      return;
+    }
+    if(!this.checkEmail(this.email)) {
       this.sendError("email");
       return;
     };
-    if(!this.checkFirstName(this.firstName)){
-      this.sendError("firstName");
-      return;
-    };
-    if(!this.checkLastName(this.lastName)){
-      this.sendError("lastName");
-      return;
-    };
-
 
 
     var info = {
       username:   this.username,
-      password:   this.password,
+      password1:  this.password1,
+      password2:  this.password2,
       email:      this.email,
-      firstName:  this.firstName,
-      lastName:   this.lastName
     }
 
-    this.signUpInfo.setNewUserInfo(info);
-    
-    //this.navCtrl.push(TabsPage);
+    this.sendInfo(info);
   }
 
-  checkUsername(username){
+  checkUsername(username) {
     // null
-    if(!username){
+    if(!username) {
       return 0;
     }
 
     // Length
-    if(username.length < 6 || username.length > 16){
+    if(username.length < 6 || username.length > 16) {
       return 0;
     }
+
     return 1;
   }
 
-  checkPassword(password){
+  checkPassword(password) {
     // null
-    if(!password){
+    if(!password) {
+      console.log("password null");
       return 0;
     }
     
     // Length
-    if(password.length < 8 || password.length > 20){
+    if(password.length < 8 || password.length > 20) {
+      console.log("password small or big");
       return 0;
     }
+
     return 1;
   }
 
-  checkEmail(email){
-    // null
-    if(!email){
+  checkTwoPasswords(password, password2) {
+    // Same passwords
+    if(password != password2) {
       return 0;
     }
+
+    return 1;
+  }
+
+  checkEmail(email) {
+    // null
+    if(!email) {
+      return 0;
+    }
+
     // Cointains '@' and a '.'
-    if(email.indexOf("@") < 0 || email.indexOf(".") < 0){
+    if(email.indexOf("@") < 0 || email.indexOf(".") < 0) {
       return 0;
     }
+
     return 1;
   }
 
-  checkFirstName(firstName){
-    // null
-    if(!firstName){
-      return 0;
-    }
-    // Length
-    if(firstName.length < 1 || firstName.length > 20){
-      return 0;
-    }
-    return 1;
-  }
-
-  checkLastName(lastName){
-    // null
-    if(!lastName){
-      return 0;
-    }
-    // Length
-    if(lastName.length < 1 || lastName.length > 20){
-      return 0;
-    }
-    return 1;
-  }
-
-  sendError(value){
-    if(value == "username"){
+  sendError(value) {
+    if(value == "username") {
         alert("Please enter a valid username");
         document.getElementById('username').style.backgroundColor = "lightpink";
         return;
     }
 
-    if(value == "password"){
+    if(value == "password") {
         alert("Please enter a valid password");
-        document.getElementById('password').style.backgroundColor = "lightpink";
+        document.getElementById('password1').style.backgroundColor = "lightpink";
         return;
     }
 
-    if(value == "email"){
+    if(value == "password2") {
+        alert("Please enter a valid password");
+        document.getElementById('password2').style.backgroundColor = "lightpink";
+        return;
+    }
+
+    if(value == "twopasswords") {
+        alert("Please make sure to confirm the password");
+        document.getElementById('password1').style.backgroundColor = "lightpink";
+        document.getElementById('password2').style.backgroundColor = "lightpink";
+        return;
+    }
+
+    if(value == "email") {
         alert("Please enter a valid email");
         document.getElementById('email').style.backgroundColor = "lightpink";
         return;
     }
 
-    if(value == "firstName"){
-        alert("Please enter a valid First Name");
-        document.getElementById('firstName').style.backgroundColor = "lightpink";
-        return;
-    }
-
-    if(value == "lastName"){
-        alert("Please enter a valid last name");
-        document.getElementById('lastName').style.backgroundColor = "lightpink";
-        return;
-    }
   }
 
-  resetColor(value){
-    if(value){
+  resetColor(value) {
+    if(value) {
       document.getElementById(value).style.backgroundColor = "white";
     }
   }
 
-    sendInfo(info){
-    
+  sendInfo(info) {  
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    this.http.post('http://iwiaccount.pythonanywhere.com/rest-auth/login/',
+    this.http.post('http://iwiaccount.pythonanywhere.com/rest-auth/registration/',
       JSON.stringify(info), {headers: headers})
     .map(res => res.json())
     .subscribe(data => {
-      console.log(data);
-     });
+      this.navCtrl.push(IdeasPage, data);
+    })
+
   }
+
 }
